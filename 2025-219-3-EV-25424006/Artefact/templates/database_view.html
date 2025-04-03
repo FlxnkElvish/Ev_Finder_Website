@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Database View{% endblock %}
+
+{% block content %}
+    <h1>📊 Database View: All Saved Users & Searches</h1>
+
+    <h2>🧑 All Users</h2>
+    {% if users %}
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Country</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user["name"] }}</td>
+                <td>{{ user["email"] }}</td>
+                <td>{{ user["phone"] }}</td>
+                <td>{{ user["country"] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>❌ No users found in the database.</p>
+    {% endif %}
+
+    <h2>🔍 All Search History</h2>
+    {% if searches %}
+        <table border="1">
+            <tr>
+                <th>Email</th>
+                <th>Brand</th>
+                <th>Budget (€)</th>
+                <th>Range (km)</th>
+                <th>Fast Charging</th>
+                <th>Priority</th>
+            </tr>
+            {% for search in searches %}
+            <tr>
+                <td>{{ search["email"] }}</td>
+                <td>{{ search["brand"] }}</td>
+                <td>{{ search["budget"] }}</td>
+                <td>{{ search["range"] }}</td>
+                <td>{{ search["fast_charge"] }}</td>
+                <td>{{ search["priority"] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>❌ No search history found in the database.</p>
+    {% endif %}
+{% endblock %}

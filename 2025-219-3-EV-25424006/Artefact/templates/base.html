@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}EV Finder App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body class="dark-theme">
+
+    <div id="sidebar">
+        <button id="closeSidebar">✖</button>
+        <ul>
+            <li>
+                <a href="{{ url_for('index') }}">
+                    🏠 Home
+                    <span class="tooltip">Go back to the main dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('analysis') }}">
+                    📊 Analysis
+                    <span class="tooltip">View trends and insights of EVs</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('graphs') }}">
+                    📈 Graphs 
+                    <span class="tooltip">See EV data visualizations</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('finder') }}">
+                    🚗 EV Finder App
+                    <span class="tooltip">Find the perfect EV based on your needs</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('questionnaire') }}">
+                    📋 Questionnaire
+                    <span class="tooltip">Get EV recommendations</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('database_view') }}">
+                    🗄️ Database results
+                    <span class="tooltip">View your EV recommendations</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="top-nav">
+        <button id="openSidebar">☰</button>
+        <button id="toggleTheme">🌞 Light Mode</button>
+    </div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>
